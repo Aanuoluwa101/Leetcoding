@@ -12,6 +12,7 @@ I used the two-pointer pattern.
 The solution has a time complexity of O(n2)
 """
 
+# time complexity O(n2)
 def two_sum(nums, target):
     for pointer_1 in range(len(nums)):
         pointer_2 = pointer_1 + 1 
@@ -20,6 +21,20 @@ def two_sum(nums, target):
                 return [pointer_1, pointer_2]
             pointer_2 += 1
 
+
+# time complexity O(n)
+def two_sum_ai(nums, target):
+    num_dict = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in num_dict:
+            return [num_dict[complement], i]
+        num_dict[num] = i
+    
+    # {
+    #     2: 0,
+    #     7: 1,
+    # }   for the first example, this is what num_dict will look like when the function returns
 
 if __name__ == "__main__":
     nums, target = [2, 7, 11, 15], 9
